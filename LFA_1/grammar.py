@@ -1,7 +1,14 @@
 import random
 from finite_automaton import FiniteAutomaton
 class Grammar:
+    """
+    Represents a grammar with nonterminals, terminals, productions, and a start symbol.
+    """
+
     def __init__(self):
+        """
+        Initializes the Grammar object with default values.
+        """
         self.nonterminals = {'S', 'A', 'B', 'C'}
         self.terminals = {'a', 'b', 'c', 'd'}
         self.productions = {
@@ -13,6 +20,15 @@ class Grammar:
         self.start_symbol = 'S'
 
     def generate_strings(self, count=5):
+        """
+        Generates a specified number of strings based on the grammar.
+
+        Args:
+            count (int): The number of strings to generate. Default is 5.
+
+        Returns:
+            list: A list of generated strings.
+        """
         strings = []
         while len(strings) < count:
             string = self._generate_from_symbol(self.start_symbol)
@@ -21,6 +37,15 @@ class Grammar:
         return strings
 
     def _generate_from_symbol(self, symbol):
+        """
+        Generates a string based on the given symbol.
+
+        Args:
+            symbol (str): The symbol to generate the string from.
+
+        Returns:
+            str: The generated string.
+        """
         if symbol in self.terminals:
             return symbol
         else:
@@ -29,6 +54,15 @@ class Grammar:
             return ''.join(self._generate_from_symbol(sym) for sym in chosen_production)
         
     def to_finite_automaton(grammar):
+        """
+        Converts the grammar to a Finite Automaton.
+
+        Args:
+            grammar (Grammar): The grammar to convert.
+
+        Returns:
+            FiniteAutomaton: The converted Finite Automaton.
+        """
         states = grammar.nonterminals.union({'FINAL'})
         alphabet = grammar.terminals
         transitions = {}

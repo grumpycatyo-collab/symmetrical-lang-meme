@@ -1,5 +1,17 @@
 import random
 class FiniteAutomaton:
+    """
+    Represents a finite automaton.
+
+    Attributes:
+        states (list): List of states in the automaton.
+        alphabet (list): List of symbols in the alphabet of the automaton.
+        transitions (dict): Dictionary representing the transitions of the automaton.
+            The keys are tuples of the form (state, symbol), and the values are lists of next states.
+        start_state: The start state of the automaton.
+        final_states (list): List of final states in the automaton.
+    """
+
     def __init__(self, states, alphabet, transitions, start_state, final_states):
         self.states = states
         self.alphabet = alphabet
@@ -21,6 +33,15 @@ class FiniteAutomaton:
         return fa_representation
 
     def accepts(self, string):
+        """
+        Determines whether the automaton accepts a given string.
+
+        Args:
+            string (str): The input string.
+
+        Returns:
+            bool: True if the automaton accepts the string, False otherwise.
+        """
         def _accepts(state, remaining_string):
             if not remaining_string:
                 return state in self.final_states
