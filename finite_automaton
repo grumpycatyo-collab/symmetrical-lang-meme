@@ -1,0 +1,22 @@
+// Finite Automaton
+digraph {
+	node [shape=circle]
+	A
+	node [shape=circle]
+	C
+	node [shape=circle]
+	S
+	node [shape=circle]
+	B
+	node [shape=doublecircle]
+	FINAL
+	S -> A [label=d]
+	A -> FINAL [label=d]
+	A -> B [label=a]
+	B -> C [label=b]
+	C -> A [label=c]
+	C -> S [label=a]
+	node [shape=none]
+	start [label=""]
+	start -> S
+}
