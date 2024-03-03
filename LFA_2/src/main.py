@@ -26,7 +26,7 @@ def convert_to_regular_grammar(fa):
         if state not in grammar:
             grammar[state] = []
         for next_state in next_states:
-            # Directly use state names (assumed to be numbers as strings or similar)
+           
             grammar[state].append(f"{symbol}{next_state}")
     for final_state in fa.final_states:
         if final_state in grammar:
@@ -44,7 +44,7 @@ def is_deterministic(fa):
 
 
 def convert_ndfa_to_dfa(ndfa):
-    dfa_states = {frozenset([ndfa.start_state]): '0'}  # Start with '0' instead of 'q0'
+    dfa_states = {frozenset([ndfa.start_state]): '0'}  
     dfa_transitions = {}
     dfa_final_states = []
     unmarked_states = [frozenset([ndfa.start_state])]
@@ -60,7 +60,7 @@ def convert_ndfa_to_dfa(ndfa):
                 continue
             next_states_frozenset = frozenset(next_states)
             if next_states_frozenset not in dfa_states:
-                new_state_name = str(len(dfa_states))  # Generate new state name based on length
+                new_state_name = str(len(dfa_states)) 
                 dfa_states[next_states_frozenset] = new_state_name
                 unmarked_states.append(next_states_frozenset)
             dfa_transitions[(dfa_states[current_dfa_state], symbol)] = dfa_states[next_states_frozenset]
