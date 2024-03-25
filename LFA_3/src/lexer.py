@@ -33,7 +33,7 @@ def t_PATH(data, pos):
 
 # Function for handling commands
 def t_COMMAND(data, pos):
-    match = re.match(r'\b(imp|crop|sudo|dnf|pacman|apt|update)\b', data[pos:])
+    match = re.match(r'\b(lib|ranger|git|commit|sudo|dnf|pacman|apt|update)\b', data[pos:])
     if match:
         return match.group(), pos + len(match.group())
     return None, pos
